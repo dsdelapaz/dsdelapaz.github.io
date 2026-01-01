@@ -4,6 +4,30 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+// For Dark Theme Toggle
+const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+  
+    if (currentTheme === 'dark') {
+        toggleSwitch.checked = true;
+    }
+}
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    }
+    else {        document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+    }    
+}
+
+toggleSwitch.addEventListener('change', switchTheme, false);
+
 (function($) {
 
 	var $window = $(window),
@@ -96,22 +120,22 @@
 	// Main Sections: Two.
 
 		// Lightbox gallery.
-			$window.on('load', function() {
+			// $window.on('load', function() {
 
-				$('#two').poptrox({
-					caption: function($a) { return $a.next('h3').text(); },
-					overlayColor: '#2c2c2c',
-					overlayOpacity: 0.85,
-					popupCloserText: '',
-					popupLoaderText: '',
-					selector: '.work-item a.image',
-					usePopupCaption: true,
-					usePopupDefaultStyling: false,
-					usePopupEasyClose: false,
-					usePopupNav: true,
-					windowMargin: (breakpoints.active('<=small') ? 0 : 50)
-				});
+			// 	$('#two').poptrox({
+			// 		caption: function($a) { return $a.next('h3').text(); },
+			// 		overlayColor: '#2c2c2c',
+			// 		overlayOpacity: 0.85,
+			// 		popupCloserText: '',
+			// 		popupLoaderText: '',
+			// 		selector: '.work-item a.image',
+			// 		usePopupCaption: true,
+			// 		usePopupDefaultStyling: false,
+			// 		usePopupEasyClose: false,
+			// 		usePopupNav: true,
+			// 		windowMargin: (breakpoints.active('<=small') ? 0 : 50)
+			// 	});
 
-			});
+			// });
 
 })(jQuery);
